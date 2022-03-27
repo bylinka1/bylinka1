@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+</head>
+<body>
+    <script>
+        var name = prompt("What is your name?");
+        console.log("Hello " + name);
+        var likesCats = confirm("Do you like cats?");
+        if (likesCats) {
+            console.log("You are a cool cat");
+        } else {
+            console.log("You're still a good cat");
+        }
+        alert("Javascript is awesome");
+
+
+
+        var words = [
+            "javascript",
+            "cake",
+            "juice",
+            "jupiter",
+            "bullshit",
+            "sandwich",
+            "butterfly",
+            "sausages"
+        ];
+        var indexWords = Math.floor(Math.random() * words.length);
+        var word = words[indexWords];
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+        var guesses = 10;
+        var remainingLetters = word.length;
+        while (remainingLetters > 0 && guesses > 0 ) {
+            alert(answerArray.join(" "));
+            var guess = prompt("Guess the letter, or click Cancel stop playing!");
+            var guessNew = guess.toLowerCase();
+            if (guessNew === null) {
+                break;
+            } else if (guessNew.length !== 1) {
+                alert("Please enter a single letter!");
+            } else {
+                guesses--;
+            
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guessNew && answerArray[j] === "_") {
+                        answerArray[j] = guessNew;
+                        remainingLetters--;
+                    }
+                    
+                }        
+            }
+        }
+    
+        alert(answerArray.join(" "));
+        if (guesses > 0) {
+            alert("Good job! The answer was " + word); 
+        } else {
+            alert("Very bad! the answer was " + word)
+        }
+    </script>
+</body>
+</html>
